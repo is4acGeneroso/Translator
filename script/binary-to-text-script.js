@@ -20,10 +20,6 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
         error_message.hidden = true;
         binaryToText(input_binary);
     }
-        /*else {
-        binaryToText(input_binary);
-    }*/
-
 });
 
 function validateZeroOne(binary) { //this simple function has the purpose the check if each number typed is different of 0 and 1 
@@ -53,36 +49,26 @@ function binaryToText(binary) {
         space: "00100000" 
     };
 
-    let binaryTools = {
-        turn: [[], []],
-        savedLength: binary.length
+    let binaryTools = { //it creates an object with turn as a member
+        turn: [],
     };
 
-    for(let i = 0; i < binary.length; i++) {
-        for() {
-            
+    let byte = 0; //this var is used to make an amount of bit or a byte example: (11111111) eight numbers is equal to 8 bits and 8 bit is a byte
+
+    //
+    for(let bit = 0; bit < binary.length / 8; bit++) { //it counts how many bytes has in the input
+        binaryTools.turn.push(binary.slice(byte, byte+8)); //and then assign them to the array
+        byte += 8; //after that it will continue for the next byte 
+    }
+
+    //this logic is very simple im just comparing the byte which was typed to the byte who has the position in the object of a letter and then i show it 
+    for(let i = 0; i < binary.length / 8; i++) {
+        for(let j = 0; j < 26; j++) {        
+            if(binaryTools.turn[i] == combinatios.binaryAlphabet[j]) { 
+                translation = combinatios.textAlphabet[j]; 
+                result.innerHTML += `${binaryTools.turn[i]} = ${translation}`; 
+                result.innerHTML += "<br>";
+            } 
         }
     }
 }
-
-/*            
-    let binaryLetter = "";
-    let quantitiesOfChar = binary.length; 
-
-    for(let i = 0; i < binary.length; i++) {
-        binaryLetter += binary[i]; 
-        }
-
-    while(quantitiesOfChar > 7) {
-    for(let i = 0; i < binary.length; i++) {
-    for(let j = 0; j < binary.length; j++) {
-        if(binaryLetter[]) {
-
-        }
-    }
-    }
-    quantitiesOfChar -= 8;
-    }
-
-    let binaryArrayLength = binaryArray.length;       
-*/
