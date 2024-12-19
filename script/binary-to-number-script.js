@@ -5,12 +5,27 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
 
     if(!input_binary) {
         error_message.hidden = false;
-        error_message.innerText = "it needs to contains something to start"
+        error_message.innerText = "it needs to contains something to start";
+    } else if(!validateZeroOne(input_binary)) {
+        error_message.hidden = false;
+        error_message.innerText = "don't forget, binary numbers are 0 and 1 ;)";
     } else {
         error_message.hidden = true;
         binaryToNumber(input_binary);
     }
-})
+});
+
+function validateZeroOne(binary) { //this simple function has the purpose the check if each number typed is different of 0 and 1 
+    for(let i = 0; i < binary.length; i++) {
+        if(binary[i] != 0 && binary[i] != 1) {
+            //if it is different return false
+            return false;
+        } 
+    }
+    
+    //if the group of numbers only has 0 and 1 return true 
+    return true;
+}
 
 function binaryToNumber(binary) {
     translateTools = {

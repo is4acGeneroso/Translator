@@ -1,3 +1,5 @@
+var clipBoardTranslation = []; 
+
 const btn_translate = document.getElementById('btn_translate').addEventListener('click', () => { 
     //cacth up the components like the input box, the local of message errors and the local of the result
     let input_binary = document.getElementById('input_binary').value;
@@ -20,6 +22,22 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
         error_message.hidden = true;
         binaryToText(input_binary);
     }
+});
+
+const btn_copy = document.getElementById('copy_button').addEventListener('click', () => {
+    if(clipBoardTranslation.length == 0) {
+        alert("There's nothing to copy")
+    } else {
+        navigator.clipboard.writeText(clipBoardTranslation.join('')).then(() => {
+            alert("Copied!");
+        });
+    }
+}) 
+
+const btn_paste = document.getElementById('paste_button').addEventListener('click', async () => {
+    let pasteBinary = await navigator.clipboard.readText();
+    document.getElementById('input_binary').value = pasteBinary;
+
 });
 
 function validateZeroOne(binary) { //this simple function has the purpose the check if each number typed is different of 0 and 1 
@@ -66,6 +84,7 @@ function binaryToText(binary) {
         for(let j = 0; j < 26; j++) {        
             if(binaryTools.turn[i] == combinatios.binaryAlphabet[j]) { 
                 translation = combinatios.textAlphabet[j]; 
+                clipBoardTranslation.push(translation);
                 result.innerHTML += `${binaryTools.turn[i]} = ${translation}`; 
                 result.innerHTML += "<br>";
             } 

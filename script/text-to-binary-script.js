@@ -1,3 +1,5 @@
+var translationClipBoard = [];
+
 //add an event to call the main function when its clicked
 const btn_translate = document.getElementById('btn_translate').addEventListener('click', () => {
     //cacth up the components like the input box, the local of message errors and the local of the result
@@ -9,6 +11,9 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
         //show the error
         error_message.hidden = false;
         error_message.innerText = "it should has at least one letter";
+    } else if(/\d/.test(input_text) || /\W/.test(input_text)) { //just in case that the word contains special characteres or numbers  
+        error_message.hidden = false;
+        error_message.innerText = "special characters or numbers are not allowed"
     } else { //if its not empty
         //hidden the error and call a function passing by the parameter what was typed with upper case form
         error_message.hidden = true;
@@ -16,11 +21,25 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
     }
 });
 
+const copy_button = document.getElementById('copy_button').addEventListener('click', () => {
+    if(translationClipBoard.length == 0) {
+        alert("there's nothing to copy!")
+    } else {
+        navigator.clipboard.writeText(translationClipBoard.join('')).then(() => {
+            alert("Copied");
+        })
+    }
+});
+
+const paste_button = document.getElementById('paste_button').addEventListener('click', async () => {
+    const pasteText = await navigator.clipboard.readText();
+    document.getElementById('input_text').value = pasteText;
+});
+
 function textToBinary(text) {
     result.innerText = ""; //it sets the local's result message as empty 
 
     let translation = ""; //the result will be assign in this local variable
-
     //combinations is the object that contains the alphabet in binary and stand one, space in addition
     let combinatios = {
         textAlphabet: [
@@ -36,10 +55,12 @@ function textToBinary(text) {
         for(let j = 0; j < 26; j++) { //and each time does the comparation with each other
             if(text[i] == combinatios.textAlphabet[j]) { //ill give an example: if a letter of the word is equal to the letter of the combination 
                 translation = combinatios.binaryAlphabet[j]; //then it does the translation because it already found the correct position
+                translationClipBoard.push(translation);
                 result.innerHTML += `${text[i]} = ${translation}`; //show the translation of the letter with its original form
                 result.innerHTML += "<br>";
             } else if(text[i] == " ") { //in case that word got spaces 
                 translation = combinatios.space; //just assign the space in its binary form
+                translationClipBoard.push(translation);
                 result.innerHTML += `SPACE = ${translation}`; //show the translation as well
                 result.innerHTML += "<br>";
                 break;
