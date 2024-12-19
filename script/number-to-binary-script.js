@@ -22,11 +22,9 @@ function numberToBinary(number) {
     if(number == 0) { //if number is equal to 0 just return the number because 0 in binary is 0
         let translation = "";
         translation = String(number); 
-        result.innerHTML += `${number} = 0000000${translation}`; 
     } else if(number == 1) { //if number is equal to 1 just return the number because 1 in binary is 1
         let translation = "";
         translation = String(number); 
-        result.innerHTML += `${number} = 0000000${translation}`; 
     } else {
         const operation = { //create an object to helps in the conversion
             numberDivided: number,
@@ -47,9 +45,6 @@ function numberToBinary(number) {
         operation.translation.push(String(operation.divisionResult)); //add the final result of operation for translation
         operation.translation.reverse(); //reverse function
 
-        while(operation.translation.length < 8) { //if the translation's length be less than 8 add 0 until it gets 8 of length
-            operation.translation.push("0");
-        }
         result.innerHTML = `${number} = ${operation.translation.join('')}`;//this join function is used to takes off the comma between each value in the array
     }
 }

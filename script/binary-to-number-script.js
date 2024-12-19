@@ -1,6 +1,7 @@
 const btn_translate = document.getElementById('btn_translate').addEventListener('click', () => {
     let input_binary = document.getElementById('input_binary').value;
     let error_message = document.getElementById('error_message');
+    let result = document.getElementById('result');
 
     if(!input_binary) {
         error_message.hidden = false;
@@ -31,5 +32,5 @@ function binaryToNumber(binary) {
         i--;
     }
 
-    console.log(translateTools.translation);
+    result.innerHTML = `${binary} = ${translateTools.translation}`;
 }
