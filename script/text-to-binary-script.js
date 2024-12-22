@@ -11,14 +11,16 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
         //show the error
         error_message.hidden = false;
         error_message.innerText = "it should has at least one letter";
-    } else if(/\d/.test(input_text) || /\W/.test(input_text)) { //just in case that the word contains special characteres or numbers  
-        error_message.hidden = false;
-        error_message.innerText = "special characters or numbers are not allowed"
-    } else { //if its not empty
-        //hidden the error and call a function passing by the parameter what was typed with upper case form
-        error_message.hidden = true;
-        textToBinary(input_text.toUpperCase());
-    }
+    } 
+    else { //if its not empty
+    //hidden the error and call a function passing by the parameter what was typed with upper case form
+         error_message.hidden = true;
+         textToBinary(input_text.toUpperCase());
+     }
+    /*else if(/\d/.test(input_text) || /\W/.test(input_text)) { //just in case that the word contains special characteres or numbers  
+    error_message.hidden = false;
+    error_message.innerText = "special characters or numbers are not allowed"
+    }*/
 });
 
 const copy_button = document.getElementById('copy_button').addEventListener('click', () => {
