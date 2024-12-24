@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="..\script\convert-text-to-binary.js" defer></script>
+    <link rel="stylesheet" href="../styles/base.css">
     <title>Text to Binary</title>
 </head>
 <body>
+<div class="main-container">
     <p id="error_message" hidden>try typing something</p>
-
+    
     <label for="input_text">Type Something</label>
     <input type="text" id="input_text" name="input_text" placeholder="Enter text">
-            
+    
     <button id="btn_translate">Translate!</button>
-        
+    
+</div>
+<div class="main-container">
     <p id="result">The translate will appear here!</p>
-
+</div>
+    
     <button id="copy_button">Copy</button>
     <button id="paste_button">Paste</button>
-
+    
     <a href="../index.html"><button>Back to the menu</button></a>
 </body>
 </html>

@@ -1,0 +1,17 @@
+.main-container {
+    height: 350px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+button {
+    height: 50px;
+    width: 250px;
+    margin-bottom: 10px;
+}
