@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binary to Number</title>
     <script src="..\script\convert-binary-to-number.js" defer></script>
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout-pages.css">
+    <title>Text to Binary</title>
 </head>
 <body>
-    <p id="error_message" hidden>try typing something</p>
-
-    <label for="input_binary">Type Something:</label>
-    <input type="number" id="input_binary" name="input_binary" placeholder="Enter number">
+<div class="flex-container">
+    <p id="error_message" class="error_message" hidden></p>
+    <div class="container-1">
         
-    <button id="btn_translate">Translate!</button>
-
-    <p id="result">The translate will appear here!</p>
-
-    <button id="copy_button">Copy</button>
-    <button id="paste_button">Paste</button>
-
-    <a href="../index.html"><button>Back to the menu</button></a>
+        <label for="input_binary" class="title">Type Something</label>
+        <input type="number" id="input_binary" name="input_binary">
+    
+        <button id="btn_translate" class="translate-button">Translate</button>
+    </div>
+    
+    <div class="container-2">
+        <p id="result">The translate will appear here!</p>
+    </div>
+    
+    <div class="container-3">
+        <button id="copy_button" class="manipulation-buttons">Copy</button>
+        <button id="paste_button" class="manipulation-buttons">Paste</button>
+        <a href="../index.html"><button class="manipulation-buttons">Menu</button></a>
+    </div>
+</div>
+    
 </body>
 </html>

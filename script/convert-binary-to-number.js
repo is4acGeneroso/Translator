@@ -5,9 +5,9 @@ const btn_translate = document.getElementById('btn_translate').addEventListener(
     let error_message = document.getElementById('error_message');
     let result = document.getElementById('result');
 
-    if(!input_binary) {
+    if(input_binary == "") {
         error_message.hidden = false;
-        error_message.innerText = "it needs to contains something to start";
+        error_message.innerText = "input empty!";
     } else if(!validateZeroOne(input_binary)) {
         error_message.hidden = false;
         error_message.innerText = "don't forget, binary numbers are 0 and 1 ;)";

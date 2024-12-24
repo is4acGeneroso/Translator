@@ -37,7 +37,6 @@ const btn_copy = document.getElementById('copy_button').addEventListener('click'
 const btn_paste = document.getElementById('paste_button').addEventListener('click', async () => {
     let pasteBinary = await navigator.clipboard.readText();
     document.getElementById('input_binary').value = pasteBinary;
-
 });
 
 function validateZeroOne(binary) { //this simple function has the purpose the check if each number typed is different of 0 and 1 

@@ -2,11 +2,17 @@ var clipBoardTranslation = [];
 
 const btn_translate = document.getElementById('btn_translate').addEventListener('click', () => {
     //cacth up the components like the input box, the local of message errors and the local of the result
-    let input_number = parseInt(document.getElementById('input_number').value);
+    let input_number = document.getElementById('input_number').value;
     let error_message = document.getElementById('error_message');
     let result = document.getElementById('result');
 
-    numberToBinary(input_number);
+    if(input_number == "") {
+        error_message.hidden = false;
+        error_message.innerText = "input empty!";
+    } else {
+        error_message.hidden = true;
+        numberToBinary(input_number); 
+    }
 });
 
 const copy_button = document.getElementById('copy_button').addEventListener('click', () => {
@@ -18,7 +24,6 @@ const copy_button = document.getElementById('copy_button').addEventListener('cli
 const paste_button = document.getElementById('paste_button').addEventListener('click', async () => {
     const pasteBinary = await navigator.clipboard.readText();
     document.getElementById('input_number').value = pasteBinary;
-
 });
 
 function numberToBinary(number) {

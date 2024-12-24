@@ -5,25 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="..\script\convert-text-to-binary.js" defer></script>
     <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout-pages.css">
     <title>Text to Binary</title>
 </head>
 <body>
-<div class="main-container">
-    <p id="error_message" hidden>try typing something</p>
+<div class="flex-container">
+    <p id="error_message" class="error_message" hidden></p>
+    <div class="container-1">
+        
+        <label for="input_text" class="title">Type Something</label>
+        <input type="text" id="input_text" name="input_text">
     
-    <label for="input_text">Type Something</label>
-    <input type="text" id="input_text" name="input_text" placeholder="Enter text">
+        <button id="btn_translate" class="translate-button">Translate</button>
+    </div>
     
-    <button id="btn_translate">Translate!</button>
+    <div class="container-2">
+        <p id="result">The translate will appear here!</p>
+    </div>
     
+    <div class="container-3">
+        <button id="copy_button" class="manipulation-buttons">Copy</button>
+        <button id="paste_button" class="manipulation-buttons">Paste</button>
+        <a href="../index.html"><button class="manipulation-buttons">Menu</button></a>
+    </div>
 </div>
-<div class="main-container">
-    <p id="result">The translate will appear here!</p>
-</div>
     
-    <button id="copy_button">Copy</button>
-    <button id="paste_button">Paste</button>
-    
-    <a href="../index.html"><button>Back to the menu</button></a>
 </body>
 </html>
